@@ -40,23 +40,22 @@
     
     function pageload() {   
         dataList.innerHTML = ""; 
-
         for (var i = 0; i <= sessionStorage.length - 1; i++) {     
-
-        for (var i = 0; i <= sessionStorage.length - 1; i++) {      
-
             var key = sessionStorage.key(i);                            
             dataList.options[dataList.options.length] = new Option(key, key);
         }
     }
-
 
     function create() {    
         sessionStorage.setItem(create_data.value, 0);               
         pageload();
     }
 
-
+    function delete_data() {        
+        var option_value = select.options[select.selectedIndex].value;      
+        sessionStorage.removeItem(option_value);                    
+        pageload();         
+    }
     </script>
 </body>
 </html>
