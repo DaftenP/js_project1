@@ -4,35 +4,39 @@
     <meta charset="UTF-8">
     <title>Document</title>
 </head>
-<body>
+<body onload="pageload();">
     
     <h1>Git/Github를 이용한 Javascript CRUD Project</h1>
     <div>
-        <input type = "text" id = "read_data">
-        <button type = "button" onclick="read();">검색</button>
+        <input type="text" id="read_data">
+        <input type="button" value="검색" onclick="read()">
     </div>
     
     
     <div>
-        <select name = "list" multiple size=20>
-            
-        </select>
-        <button type = "button" onclick="delete();">삭제</button>
+        <select id="dataList" style=width:200px multiple size=20></select>
+        <button type="button" onclick="delete_data()">삭제</button>
     </div>
             
             
     <div>
-        <input type = "text" id = "create_data">
-        <button type = "button" onclick="create();">생성</button>
+        <input type="text" id="create_data">
+        <input type="button" value="생성" onclick="create()">
     </div>
             
             
     <div>
-        <input type = "text" id = "update_data">
-        <button type = "button" onclick="update();">수정</button>
+        <input type="text" id="update_data">
+        <input type="button" value="수정" onclick="update()">
     </div>
+    
     <script>
-    //스크립트 파트
+    var sessionStorage = window.sessionStorage;                     
+    var dataList = document.getElementById("dataList");             
+    var create_data = document.getElementById("create_data");       
+    var select = document.getElementById("dataList");               
+    var update_data = document.getElementById("update_data");       
+    var read_data = document.getElementById("read_data");           
     </script>
 </body>
 </html>
