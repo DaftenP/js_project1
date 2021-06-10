@@ -56,6 +56,16 @@
         sessionStorage.removeItem(option_value);                    
         pageload();         
     }
+
+
+    function update() {     
+        if (update_data.value != "") {                              
+            delete_data();      
+            sessionStorage.setItem(update_data.value, 0);           
+            pageload();     
+        }
+    }
+
     </script>
 </body>
 </html>
