@@ -36,6 +36,7 @@
     var create_data = document.getElementById("create_data");       //추가 기능 id를 변수에 할당
     var select = document.getElementById("dataList");               //select태그의 options을 담을 객체
     var update_data = document.getElementById("update_data");       //수정 기능 id를 변수에 할당
+
     var read_data = document.getElementById("read_data");           //검색 기능 id를 변수에 할당
         
     function pageload() {   //select태그 새로고침
@@ -59,6 +60,46 @@
             delete_data();      //삭제기능 실행
             sessionStorage.setItem(update_data.value, 0);           //update_data의 값으로 키 생성
             pageload();     //select태그 새로고침
+
+    var read_data = document.getElementById("read_data");           //검색 기능 id를 변수에 할당   
+    
+    function pageload() {   
+        dataList.innerHTML = ""; 
+        for (var i = 0; i <= sessionStorage.length - 1; i++) {      
+            var key = sessionStorage.key(i);                            
+            dataList.options[dataList.options.length] = new Option(key, key);
+        }
+    }
+
+    function create() {    
+        sessionStorage.setItem(create_data.value, 0);             
+        pageload();
+    }
+
+    function delete_data() {        
+        var option_value = select.options[select.selectedIndex].value;     
+        sessionStorage.removeItem(option_value);                   
+        pageload();        
+    }
+
+    function update() {     
+        if (update_data.value != "") {                             
+            delete_data();     
+            sessionStorage.setItem(update_data.value, 0);           
+            pageload();    
+        }
+    }
+
+    function read() {       
+        var rowSel = dataList.options.length;                       
+        for (var i = 0; i < rowSel; i++) {                         
+            dataList.options[i].selected = false;                   
+        }
+        for (var i = 0; i < rowSel; i++) {                          
+            if (dataList.options[i].value == read_data.value){      
+                dataList.options[i].selected = true;               
+                break;                                             
+            }
         }
     }
     function read() {       //검색 기능
